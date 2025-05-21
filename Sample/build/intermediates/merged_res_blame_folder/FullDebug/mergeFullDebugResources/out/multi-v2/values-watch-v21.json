@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.live2d.demo.Sample-mergeFullDebugResources-35:/values-watch-v21/values-watch-v21.xml",
+            "outputFile": "com.live2d.demo.Sample-mergeFullDebugResources-51:/values-watch-v21/values-watch-v21.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\MIN\\.gradle\\caches\\8.11.1\\transforms\\2747f1921a5192033b00ff58029d10c7\\transformed\\appcompat-1.3.1\\res\\values-watch-v21\\values-watch-v21.xml",
+                    "source": "C:\\Users\\MIN\\.gradle\\caches\\8.11.1\\transforms\\90c45223f917d23d5364577a4f9448ec\\transformed\\appcompat-1.6.1\\res\\values-watch-v21\\values-watch-v21.xml",
                     "from": {
                         "startLines": "2,6,10",
                         "startColumns": "4,4,4",
