@@ -3562,6 +3562,7 @@ id linearLayout2
 id listMode
 id list_item
 id locale
+id logoImage
 id ltr
 id m3_side_sheet
 id marquee
@@ -3992,6 +3993,7 @@ layout activity_edit
 layout activity_main
 layout activity_name_input
 layout activity_setting
+layout activity_splash
 layout bottomsheet_alarm_time_picker
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row

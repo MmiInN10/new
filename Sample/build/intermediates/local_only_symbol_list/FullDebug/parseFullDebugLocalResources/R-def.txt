@@ -61,6 +61,7 @@ id layoutForm
 id layout_push_alarm
 id linearLayout
 id linearLayout2
+id logoImage
 id number_picker_days_before
 id root_layout
 id switch_chatbot_alarm
@@ -89,6 +90,7 @@ layout activity_edit
 layout activity_main
 layout activity_name_input
 layout activity_setting
+layout activity_splash
 layout bottomsheet_alarm_time_picker
 layout custom_toast
 layout item_event
