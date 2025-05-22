@@ -1,6 +1,7 @@
 package com.live2d.demo.full.calendar;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -8,6 +9,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
+import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -242,11 +244,19 @@ public class AddActivity extends AppCompatActivity {
 
                     startDateTime = new DateTime(startCal.getTime(), TimeZone.getTimeZone("Asia/Seoul"));
                     endDateTime = new DateTime(endCal.getTime(), TimeZone.getTimeZone("Asia/Seoul"));
-                } else {
-                    startDateTime = new DateTime(true, calendar.getTimeInMillis(), 0);
-                    endDateTime = new DateTime(true, calendar.getTimeInMillis(), 0);
-                }
+                }else {
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                    dateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
 
+                    String startDateStr = dateFormat.format(calendar.getTime());
+
+                    Calendar endCal = (Calendar) calendar.clone();
+                    endCal.add(Calendar.DAY_OF_MONTH, 1);
+                    String endDateStr = dateFormat.format(endCal.getTime());
+
+                    startDateTime = new DateTime(startDateStr);
+                    endDateTime = new DateTime(endDateStr);
+                }
                 googleCalendarHelper.insertEvent(title, startDateTime, endDateTime, !isTimeSet, new GoogleCalendarHelper.InsertEventCallback() {
                     @Override
                     public void onSuccess() {
@@ -261,12 +271,19 @@ public class AddActivity extends AppCompatActivity {
                             finish();
                         });
                     }
+                            @Override
+                            public void onFailure(Exception e) {
+                                if (e instanceof UserRecoverableAuthIOException) {
+                                    startActivityForResult(((UserRecoverableAuthIOException) e).getIntent(), 9999);
+                                } else {
+                                    runOnUiThread(() ->
+                                            Toast.makeText(AddActivity.this, "일정 저장 실패: " + e.getMessage(), Toast.LENGTH_LONG).show()
+                                    );
+                                }
+                            }
+                        }
+                );
 
-                    @Override
-                    public void onFailure(Exception e) {
-                        runOnUiThread(() -> Toast.makeText(AddActivity.this, "일정 저장 실패: " + e.getMessage(), Toast.LENGTH_LONG).show());
-                    }
-                });
             } catch (Exception e) {
                 runOnUiThread(() -> Toast.makeText(AddActivity.this, "일정 저장 실패", Toast.LENGTH_SHORT).show());
             }
@@ -320,4 +337,15 @@ public class AddActivity extends AppCompatActivity {
             Toast.makeText(this, "알림이 취소되었습니다.", Toast.LENGTH_SHORT).show();
         }
     }
-}
+        @Override
+        protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+            super.onActivityResult(requestCode, resultCode, data);
+
+            if (requestCode == 9999 && resultCode == RESULT_OK) {
+                // 권한 동의 후 다시 일정 저장
+                String title = editTextEventTitle.getText().toString();
+                saveEventToGoogleCalendar(title);  // 일정 저장 재시도
+            }
+        }
+
+    }
