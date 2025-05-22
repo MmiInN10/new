@@ -295,7 +295,7 @@ public class AddActivity extends AppCompatActivity {
             calendar.set(Calendar.MINUTE, minute);
             calendar.set(Calendar.SECOND, 0);
 
-            //AlarmScheduler.scheduleAlarm(this, calendar, title);
+            AlarmScheduler.scheduleAlarm(this, calendar, title);
         }
     }
 
@@ -314,7 +314,7 @@ public class AddActivity extends AppCompatActivity {
             calendar.set(Calendar.MINUTE, alarmMinute);
             calendar.set(Calendar.SECOND, 0);
 
-            //AlarmScheduler.cancelAlarm(this);
+            AlarmScheduler.cancelAlarm(this);
             prefs.edit().remove("alarm_hour").remove("alarm_minute").apply();
 
             Toast.makeText(this, "알림이 취소되었습니다.", Toast.LENGTH_SHORT).show();
