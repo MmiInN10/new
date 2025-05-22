@@ -3343,6 +3343,8 @@ id activity_chooser_view_content
 id add
 id adjust_height
 id adjust_width
+id alarm_selection_layout
+id alarm_setting_layout
 id alertTitle
 id aligned
 id all
@@ -3380,7 +3382,10 @@ id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
 id btnGoogleSignIn
+id btnSubmit
 id btn_add
+id btn_confirm
+id btn_confirm_time
 id buttonPanel
 id button_calendar
 id button_main
@@ -3431,6 +3436,7 @@ id cut
 id dark
 id dataBinding
 id date_picker_actions
+id date_selection_layout
 id decelerate
 id decelerateAndComplete
 id decor_content_parent
@@ -3466,6 +3472,7 @@ id easeInOut
 id easeOut
 id east
 id edge
+id editTextEventTitle
 id edit_query
 id edit_text_id
 id elastic
@@ -3475,6 +3482,7 @@ id endToStart
 id end_padder
 id enterAlways
 id enterAlwaysCollapsed
+id etName
 id eventRecyclerView
 id event_time
 id event_title
@@ -3532,10 +3540,16 @@ id invisible
 id inward
 id italic
 id item_touch_helper_previous_elevation
+id ivAlarmForward
+id ivCancel
+id ivDateForward
+id ivDatePicker
 id jumpToEnd
 id jumpToStart
 id labeled
 id layout
+id layoutForm
+id layout_push_alarm
 id left
 id leftToRight
 id legacy
@@ -3631,6 +3645,7 @@ id north
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id number_picker_days_before
 id off
 id on
 id onAttachStateChangeListener
@@ -3757,6 +3772,8 @@ id submit_area
 id sunday
 id supportScrollUp
 id switchWidget
+id switch_chatbot_alarm
+id switch_time
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -3794,6 +3811,9 @@ id textinput_prefix_text
 id textinput_suffix_text
 id thursday
 id time
+id time_picker
+id time_picker_layout
+id time_selection_layout
 id title
 id titleDividerNoCustom
 id title_template
@@ -3814,7 +3834,13 @@ id transition_transform
 id triangle
 id tuesday
 id tvEvents
+id tv_alarm_time
+id tv_alarm_title
+id tv_end_time
 id tv_selected_date
+id tv_selected_end_time
+id tv_selected_start_time
+id tv_start_time
 id unchecked
 id uniform
 id unlabeled
@@ -3960,9 +3986,13 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_add
 layout activity_calendar
+layout activity_edit
 layout activity_main
+layout activity_name_input
 layout activity_setting
+layout bottomsheet_alarm_time_picker
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout custom_dialog
