@@ -40,17 +40,24 @@
         android:testOnly="true"
         android:theme="@style/AppTheme" >
 
-        <!-- MainActivity 설정 -->
+        <!-- 스플래시 액티비티: 앱 시작점 -->
         <activity
-            android:name="com.live2d.demo.full.MainActivity"
-            android:configChanges="orientation|screenSize"
-            android:exported="true" >
+            android:name="com.live2d.demo.full.calendar.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Demo" > <!-- 스플래시 테마 지정 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- 메인 액티비티 -->
+        <activity
+            android:name="com.live2d.demo.full.MainActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="false" /> <!-- 여기는 intent-filter 제거 -->
+
 
         <!-- 다른 액티비티들 -->
         <activity android:name="com.live2d.demo.full.calendar.CalendarActivity" />
