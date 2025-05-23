@@ -135,6 +135,10 @@ public class EditActivity extends AppCompatActivity {
                     .setNegativeButton("취소", null)
                     .show();
         });
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
     }
     private void updateEvent() {
         String inputTitle = etTitle.getText().toString().isEmpty() ? "(제목 없음)" : etTitle.getText().toString();

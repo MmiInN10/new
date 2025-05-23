@@ -235,8 +235,7 @@
             android:src="@drawable/baseline_arrow_forward_ios_24"
             android:contentDescription="알림 선택 아이콘" />
     </LinearLayout>
-
-    <!-- 알림 옵션 (챗봇 알림, 푸시 알림) -->
+    <!-- 알림 옵션 (푸시 알림, 챗봇 알림 순서 변경됨) -->
     <LinearLayout
         android:id="@+id/alarm_setting_layout"
         android:layout_width="match_parent"
@@ -247,27 +246,6 @@
         app:layout_constraintTop_toBottomOf="@id/alarm_selection_layout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
-
-        <!-- 챗봇 알림 -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:paddingVertical="8dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="챗봇 알림"
-                android:textSize="16sp" />
-
-            <Switch
-                android:id="@+id/switch_chatbot_alarm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
 
         <!-- 푸시 알림 -->
         <LinearLayout
@@ -298,6 +276,26 @@
                 android:clickable="true"
                 android:focusable="true" />
         </LinearLayout>
-    </LinearLayout>
 
+        <!-- 챗봇 알림 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingVertical="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="챗봇 알림"
+                android:textSize="16sp" />
+
+            <Switch
+                android:id="@+id/switch_chatbot_alarm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

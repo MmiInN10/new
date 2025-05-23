@@ -117,6 +117,10 @@ public class AddActivity extends AppCompatActivity {
             tvAlarmTime.setText(String.format("%02d:%02d", hour, minute));
             prefs.edit().putInt("alarm_hour", hour).putInt("alarm_minute", minute).apply();
         }
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
     }
 
     private void showDatePickerDialog() {
