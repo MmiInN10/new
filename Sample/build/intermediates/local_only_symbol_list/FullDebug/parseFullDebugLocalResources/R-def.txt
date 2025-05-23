@@ -47,6 +47,7 @@ id card_account_section
 id card_chatbot_settings
 id card_notification_settings
 id date_selection_layout
+id delete_container
 id editTextEventTitle
 id etName
 id eventRecyclerView
@@ -57,6 +58,7 @@ id ivAlarmForward
 id ivCancel
 id ivDateForward
 id ivDatePicker
+id ivDelete
 id layoutForm
 id layout_push_alarm
 id linearLayout

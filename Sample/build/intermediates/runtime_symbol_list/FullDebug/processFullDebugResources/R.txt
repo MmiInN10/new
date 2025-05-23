@@ -3442,6 +3442,7 @@ int id decor_content_parent 0x7f0800a5
 int id decorated_disabled 0x7f0800a6
 int id default_activity_button 0x7f0800a7
 int id defaults 0x7f0800a8
+int id delete_container 0x7f08025b
 int id deltaRelative 0x7f0800a9
 int id dependency_ordering 0x7f0800aa
 int id design_bottom_sheet 0x7f0800ab
@@ -3543,6 +3544,7 @@ int id ivAlarmForward 0x7f080248
 int id ivCancel 0x7f080249
 int id ivDateForward 0x7f08024a
 int id ivDatePicker 0x7f08024b
+int id ivDelete 0x7f08025c
 int id jumpToEnd 0x7f080108
 int id jumpToStart 0x7f080109
 int id labeled 0x7f08010a

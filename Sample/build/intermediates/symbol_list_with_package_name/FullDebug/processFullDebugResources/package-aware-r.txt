@@ -3443,6 +3443,7 @@ id decor_content_parent
 id decorated_disabled
 id default_activity_button
 id defaults
+id delete_container
 id deltaRelative
 id dependency_ordering
 id design_bottom_sheet
@@ -3544,6 +3545,7 @@ id ivAlarmForward
 id ivCancel
 id ivDateForward
 id ivDatePicker
+id ivDelete
 id jumpToEnd
 id jumpToStart
 id labeled
