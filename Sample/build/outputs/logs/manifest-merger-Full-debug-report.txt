@@ -2,9 +2,9 @@
 manifest
 ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\main\AndroidManifest.xml:2:1-8:12
 MERGED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\main\AndroidManifest.xml:2:1-8:12
-INJECTED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:2:1-41:12
-INJECTED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:2:1-41:12
-INJECTED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:2:1-42:12
+INJECTED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:2:1-42:12
+INJECTED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:2:1-42:12
 MERGED from [Live2DCubismCore.aar] C:\Users\MIN\.gradle\caches\8.11.1\transforms\528809e8c17d42e14066f18469e300c2\transformed\jetified-Live2DCubismCore\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.databinding:databinding-adapters:8.9.0] C:\Users\MIN\.gradle\caches\8.11.1\transforms\724893131af3185944e720f1049edc64\transformed\databinding-adapters-8.9.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.databinding:databinding-runtime:8.9.0] C:\Users\MIN\.gradle\caches\8.11.1\transforms\1dca205a4990b82d3e5c80fabf1e9296\transformed\databinding-runtime-8.9.0\AndroidManifest.xml:2:1-7:12
@@ -165,8 +165,8 @@ ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManife
 	android:name
 		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:13:22-76
 application
-ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:14:5-40:19
-INJECTED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:14:5-40:19
+ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:15:5-41:19
+INJECTED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:15:5-41:19
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\MIN\.gradle\caches\8.11.1\transforms\03861d515695ac2ab8d4a13e4bda3ed1\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\MIN\.gradle\caches\8.11.1\transforms\03861d515695ac2ab8d4a13e4bda3ed1\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\MIN\.gradle\caches\8.11.1\transforms\2dc15b2b1eaa8e2d8de4dc89898ca6a4\transformed\constraintlayout-2.2.1\AndroidManifest.xml:7:5-20
@@ -230,51 +230,51 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\MI
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.13.0] C:\Users\MIN\.gradle\caches\8.11.1\transforms\d62fbcca02ee958be1fa433427ea8e7f\transformed\core-1.13.0\AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:19:9-35
+		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:20:9-35
 	android:label
-		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:17:9-41
+		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:18:9-41
 	android:roundIcon
-		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:18:9-54
+		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:19:9-54
 	android:icon
-		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:16:9-43
+		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:17:9-43
 	android:allowBackup
-		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:15:9-35
+		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:16:9-35
 	android:theme
-		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:20:9-40
+		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:21:9-40
 activity#com.live2d.demo.full.MainActivity
-ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:24:9-32:20
+ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:25:9-33:20
 	android:exported
-		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:27:13-36
+		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:28:13-36
 	android:configChanges
-		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:26:13-59
+		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:27:13-59
 	android:name
-		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:25:13-46
+		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:26:13-46
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:28:13-31:29
+ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:29:13-32:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:29:17-68
+ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:30:17-68
 	android:name
-		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:29:25-66
+		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:30:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:30:17-76
+ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:31:17-76
 	android:name
-		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:30:27-74
+		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:31:27-74
 activity#com.live2d.demo.full.calendar.CalendarActivity
-ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:35:9-68
+ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:36:9-68
 	android:name
-		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:35:19-65
+		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:36:19-65
 activity#com.live2d.demo.full.calendar.SettingActivity
-ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:36:9-67
+ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:37:9-67
 	android:name
-		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:36:19-64
+		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:37:19-64
 activity#com.live2d.demo.full.calendar.AddActivity
-ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:37:9-63
+ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:38:9-63
 	android:name
-		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:37:19-60
+		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:38:19-60
 activity#com.live2d.demo.full.calendar.EditActivity
-ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:38:9-64
+ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:39:9-64
 	android:name
-		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:38:19-61
+		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:39:19-61
 uses-sdk
 INJECTED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml
