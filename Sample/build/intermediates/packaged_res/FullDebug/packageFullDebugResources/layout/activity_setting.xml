@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:text="사용자님, 안녕하세요!"
                 android:textColor="@color/white"
-                android:textSize="18sp"/>
+                android:textSize="22sp"/>
 
             <ImageView
                 android:id="@+id/imageViewEdit"
@@ -76,7 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="계정 연동"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_marginBottom="12dp" />
@@ -115,7 +115,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="알림 설정"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_marginBottom="12dp" />
@@ -150,55 +150,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="챗봇 설정"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_marginBottom="12dp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- 하단 메뉴 버튼들을 가로로 배치 -->
-    <LinearLayout
-        android:id="@+id/bottom_nav_buttons"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:padding="16dp">
+    <!--  MainActivity로 이동 버튼  -->
+    <ImageButton android:id="@+id/button_main" android:layout_width="60dp" android:layout_height="60dp" android:layout_margin="16dp" android:background="@drawable/circle_button" android:src="@drawable/baseline_home_filled_24" android:contentDescription="메인" android:tint="@color/gray" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"/>
+    <!--  CalendarActivity로 이동 버튼  -->
+    <ImageButton android:id="@+id/button_calendar" android:layout_width="60dp" android:layout_height="60dp" android:layout_margin="16dp" android:background="@drawable/circle_button" android:src="@drawable/baseline_calendar_month_24" android:tint="@color/gray" android:contentDescription="캘린더" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintLeft_toRightOf="@+id/button_main" app:layout_constraintRight_toLeftOf="@+id/button_setting"/>
+    <!--  SettingsActivity로 이동 버튼  -->
+    <ImageButton android:id="@+id/button_setting" android:layout_width="60dp" android:layout_height="60dp" android:layout_margin="16dp" android:background="@drawable/circle_button" android:src="@drawable/baseline_settings_24" android:contentDescription="설정" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
 
-        <!-- MainActivity로 이동 버튼 -->
-        <ImageButton
-            android:id="@+id/button_main"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/circle_button"
-            android:src="@drawable/baseline_home_filled_24"
-            android:contentDescription="메인"
-            android:tint="@color/gray" />
-
-        <!-- CalendarActivity로 이동 버튼 -->
-        <ImageButton
-            android:id="@+id/button_calendar"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/circle_button"
-            android:src="@drawable/baseline_calendar_month_24"
-            android:contentDescription="캘린더"
-            android:tint="@color/gray" />
-
-        <!-- SettingsActivity로 이동 버튼 -->
-        <ImageButton
-            android:id="@+id/button_setting"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@drawable/circle_button"
-            android:src="@drawable/baseline_settings_24"
-            android:contentDescription="설정" />
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

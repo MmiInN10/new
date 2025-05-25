@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="알림 시간 설정"
-        android:textSize="18sp"
+        android:textSize="22sp"
         android:layout_gravity="center_horizontal"
         android:paddingBottom="8dp" />
 
@@ -27,6 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="확인"
-        android:layout_marginTop="16dp" />
+        android:backgroundTint="@color/black"
+        android:layout_marginTop="20dp" />
 
 </LinearLayout>

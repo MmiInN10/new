@@ -22,13 +22,16 @@
             android:hint="이름을 입력하세요"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
             android:inputType="textPersonName"/>
 
         <Button
             android:id="@+id/btnSubmit"
             android:text="확인"
+            android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
             android:layout_marginTop="20dp"/>
     </LinearLayout>
 

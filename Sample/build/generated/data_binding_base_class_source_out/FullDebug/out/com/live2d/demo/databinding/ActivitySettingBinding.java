@@ -25,9 +25,6 @@ public final class ActivitySettingBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final LinearLayout bottomNavButtons;
-
-  @NonNull
   public final SignInButton btnGoogleSignIn;
 
   @NonNull
@@ -67,15 +64,14 @@ public final class ActivitySettingBinding implements ViewBinding {
   public final LinearLayout topBar;
 
   private ActivitySettingBinding(@NonNull ConstraintLayout rootView,
-      @NonNull LinearLayout bottomNavButtons, @NonNull SignInButton btnGoogleSignIn,
-      @NonNull ImageButton buttonCalendar, @NonNull ImageButton buttonMain,
-      @NonNull ImageButton buttonSetting, @NonNull CardView cardAccountSection,
-      @NonNull CardView cardChatbotSettings, @NonNull CardView cardNotificationSettings,
-      @NonNull ImageView imageViewEdit, @NonNull TextView textViewAccountLink,
-      @NonNull TextView textViewChatbotSettings, @NonNull TextView textViewGreeting,
-      @NonNull TextView textViewNotificationSettings, @NonNull LinearLayout topBar) {
+      @NonNull SignInButton btnGoogleSignIn, @NonNull ImageButton buttonCalendar,
+      @NonNull ImageButton buttonMain, @NonNull ImageButton buttonSetting,
+      @NonNull CardView cardAccountSection, @NonNull CardView cardChatbotSettings,
+      @NonNull CardView cardNotificationSettings, @NonNull ImageView imageViewEdit,
+      @NonNull TextView textViewAccountLink, @NonNull TextView textViewChatbotSettings,
+      @NonNull TextView textViewGreeting, @NonNull TextView textViewNotificationSettings,
+      @NonNull LinearLayout topBar) {
     this.rootView = rootView;
-    this.bottomNavButtons = bottomNavButtons;
     this.btnGoogleSignIn = btnGoogleSignIn;
     this.buttonCalendar = buttonCalendar;
     this.buttonMain = buttonMain;
@@ -118,12 +114,6 @@ public final class ActivitySettingBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.bottom_nav_buttons;
-      LinearLayout bottomNavButtons = ViewBindings.findChildViewById(rootView, id);
-      if (bottomNavButtons == null) {
-        break missingId;
-      }
-
       id = R.id.btnGoogleSignIn;
       SignInButton btnGoogleSignIn = ViewBindings.findChildViewById(rootView, id);
       if (btnGoogleSignIn == null) {
@@ -202,10 +192,10 @@ public final class ActivitySettingBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivitySettingBinding((ConstraintLayout) rootView, bottomNavButtons,
-          btnGoogleSignIn, buttonCalendar, buttonMain, buttonSetting, cardAccountSection,
-          cardChatbotSettings, cardNotificationSettings, imageViewEdit, textViewAccountLink,
-          textViewChatbotSettings, textViewGreeting, textViewNotificationSettings, topBar);
+      return new ActivitySettingBinding((ConstraintLayout) rootView, btnGoogleSignIn,
+          buttonCalendar, buttonMain, buttonSetting, cardAccountSection, cardChatbotSettings,
+          cardNotificationSettings, imageViewEdit, textViewAccountLink, textViewChatbotSettings,
+          textViewGreeting, textViewNotificationSettings, topBar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

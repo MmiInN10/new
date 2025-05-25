@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.live2d.demo.R;
@@ -19,22 +21,22 @@ public class NameInputActivity extends AppCompatActivity {
 
         EditText etName = findViewById(R.id.etName);
         Button btnSubmit = findViewById(R.id.btnSubmit);
+        getSupportActionBar().hide();
 
         btnSubmit.setOnClickListener(v -> {
-            String name = etName.getText().toString();
+            String name = etName.getText().toString().trim();
             if (!name.isEmpty()) {
-                // SharedPreferences에 데이터 저장
-                Context context = getApplicationContext();
-                context.getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+                getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
                         .edit()
                         .putBoolean("isFirstLaunch", false)
                         .putString("userName", name)
                         .apply();
 
-                // MainActivity로 이동
                 Intent intent = new Intent(NameInputActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
+            } else {
+                Toast.makeText(NameInputActivity.this, "이름을 입력하세요.", Toast.LENGTH_SHORT).show();
             }
         });
     }

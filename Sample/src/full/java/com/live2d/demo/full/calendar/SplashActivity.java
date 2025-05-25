@@ -2,6 +2,7 @@ package com.live2d.demo.full.calendar;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -10,6 +11,8 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 import com.live2d.demo.R;
 import com.live2d.demo.full.MainActivity;
+
+import java.util.Map;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -21,7 +24,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         boolean isFirstLaunch = isFirstLaunch();
-        Log.d("SplashActivity", "isFirstLaunch: " + isFirstLaunch);
+        Log.d("SplashActivity", "isFirstLaunch=" + isFirstLaunch());
 
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
@@ -36,13 +39,25 @@ public class SplashActivity extends AppCompatActivity {
                 finish(); // 스플래시 액티비티 종료
             }
         }, 1500); // 1.5초 대기 후 실행
+        logAllPrefs();
+
     }
 
-    // 최초 실행 여부 확인
     private boolean isFirstLaunch() {
-        return getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
-                .getBoolean("isFirstLaunch", true);
+        SharedPreferences prefs = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
+        boolean isFirst = prefs.getBoolean("isFirstLaunch", true);
+        Log.d("SplashActivity", "isFirstLaunch() 불린값: " + isFirst);
+
+        return true;
     }
+    private void logAllPrefs() {
+        SharedPreferences prefs = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
+        Map<String, ?> allEntries = prefs.getAll();
+        for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
+            Log.d("SharedPrefsDump", entry.getKey() + " = " + entry.getValue());
+        }
+    }
+
 
     // 리셋 함수: 버튼 클릭 시 호출되어 SharedPreferences 초기화
 //    private void resetFirstLaunch() {

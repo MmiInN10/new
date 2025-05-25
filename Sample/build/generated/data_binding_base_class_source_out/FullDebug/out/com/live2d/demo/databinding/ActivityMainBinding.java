@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -21,9 +20,6 @@ public final class ActivityMainBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final LinearLayout bottomNavButtons;
-
-  @NonNull
   public final ImageButton buttonCalendar;
 
   @NonNull
@@ -36,11 +32,9 @@ public final class ActivityMainBinding implements ViewBinding {
   public final ConstraintLayout rootLayout;
 
   private ActivityMainBinding(@NonNull ConstraintLayout rootView,
-      @NonNull LinearLayout bottomNavButtons, @NonNull ImageButton buttonCalendar,
-      @NonNull ImageButton buttonMain, @NonNull ImageButton buttonSetting,
-      @NonNull ConstraintLayout rootLayout) {
+      @NonNull ImageButton buttonCalendar, @NonNull ImageButton buttonMain,
+      @NonNull ImageButton buttonSetting, @NonNull ConstraintLayout rootLayout) {
     this.rootView = rootView;
-    this.bottomNavButtons = bottomNavButtons;
     this.buttonCalendar = buttonCalendar;
     this.buttonMain = buttonMain;
     this.buttonSetting = buttonSetting;
@@ -74,12 +68,6 @@ public final class ActivityMainBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.bottom_nav_buttons;
-      LinearLayout bottomNavButtons = ViewBindings.findChildViewById(rootView, id);
-      if (bottomNavButtons == null) {
-        break missingId;
-      }
-
       id = R.id.button_calendar;
       ImageButton buttonCalendar = ViewBindings.findChildViewById(rootView, id);
       if (buttonCalendar == null) {
@@ -100,8 +88,8 @@ public final class ActivityMainBinding implements ViewBinding {
 
       ConstraintLayout rootLayout = (ConstraintLayout) rootView;
 
-      return new ActivityMainBinding((ConstraintLayout) rootView, bottomNavButtons, buttonCalendar,
-          buttonMain, buttonSetting, rootLayout);
+      return new ActivityMainBinding((ConstraintLayout) rootView, buttonCalendar, buttonMain,
+          buttonSetting, rootLayout);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
