@@ -27,7 +27,6 @@ import java.util.Locale;
 import java.util.TimeZone;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
 public class AddActivity extends AppCompatActivity {
     private TextView tvSelectedDate, tvStartTime, tvEndTime, tvAlarmTime;
     private EditText editTextEventTitle;
@@ -71,6 +70,7 @@ public class AddActivity extends AppCompatActivity {
 
         googleCalendarHelper = new GoogleCalendarHelper(this);
 
+
         switchTime.setOnCheckedChangeListener((buttonView, isChecked) -> {
             timePickerLayout.setVisibility(isChecked ? View.VISIBLE : View.GONE);
             isTimeSet = isChecked;
@@ -81,7 +81,6 @@ public class AddActivity extends AppCompatActivity {
 
         btnConfirm.setOnClickListener(v -> {
             String title = editTextEventTitle.getText().toString();
-            // 일정 제목이 비어있거나 날짜가 선택되지 않았으면 토스트 띄우고 return
             if (title.isEmpty() || tvSelectedDate.getText().toString().isEmpty()) {
                 Toast.makeText(this, "일정 제목과 날짜를 입력하세요.", Toast.LENGTH_SHORT).show();
                 return;
@@ -101,7 +100,7 @@ public class AddActivity extends AppCompatActivity {
 
         boolean isEditMode = getIntent().getBooleanExtra("isEditMode", false);
         if (!isEditMode) {
-            prefs.edit().remove("alarm_hour").remove("alarm_minute").apply();
+            prefs.edit().remove("alarm_hour").remove("alarm_minute").remove("alarm_days_before").apply();
             tvAlarmTime.setText("시간 설정");
         }
 
@@ -130,9 +129,9 @@ public class AddActivity extends AppCompatActivity {
             tvAlarmTime.setText(String.format("%02d:%02d", hour, minute));
             prefs.edit().putInt("alarm_hour", hour).putInt("alarm_minute", minute).apply();
         }
+
         ImageView ivCancel = findViewById(R.id.ivCancel);
         ivCancel.setOnClickListener(v -> finish());
-
     }
 
     private void showDatePickerDialog() {
@@ -174,6 +173,7 @@ public class AddActivity extends AppCompatActivity {
             PreferenceManager.getDefaultSharedPreferences(this).edit()
                     .putInt("alarm_hour_" + eventId, hour)
                     .putInt("alarm_minute_" + eventId, minute)
+                    .putInt("alarm_days_before_" + eventId, selectedAlarmDaysBefore)  // 추가
                     .apply();
 
             View customToastView = LayoutInflater.from(this).inflate(R.layout.custom_toast, null);
@@ -253,7 +253,7 @@ public class AddActivity extends AppCompatActivity {
 
                     startDateTime = new DateTime(startCal.getTime(), TimeZone.getTimeZone("Asia/Seoul"));
                     endDateTime = new DateTime(endCal.getTime(), TimeZone.getTimeZone("Asia/Seoul"));
-                }else {
+                } else {
                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
                     dateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
 
@@ -280,18 +280,18 @@ public class AddActivity extends AppCompatActivity {
                             finish();
                         });
                     }
-                            @Override
-                            public void onFailure(Exception e) {
-                                if (e instanceof UserRecoverableAuthIOException) {
-                                    startActivityForResult(((UserRecoverableAuthIOException) e).getIntent(), 9999);
-                                } else {
-                                    runOnUiThread(() ->
-                                            Toast.makeText(AddActivity.this, "일정 저장 실패: " + e.getMessage(), Toast.LENGTH_LONG).show()
-                                    );
-                                }
-                            }
+
+                    @Override
+                    public void onFailure(Exception e) {
+                        if (e instanceof UserRecoverableAuthIOException) {
+                            startActivityForResult(((UserRecoverableAuthIOException) e).getIntent(), 9999);
+                        } else {
+                            runOnUiThread(() ->
+                                    Toast.makeText(AddActivity.this, "일정 저장 실패: " + e.getMessage(), Toast.LENGTH_LONG).show()
+                            );
                         }
-                );
+                    }
+                });
 
             } catch (Exception e) {
                 runOnUiThread(() -> Toast.makeText(AddActivity.this, "일정 저장 실패", Toast.LENGTH_SHORT).show());
@@ -306,6 +306,7 @@ public class AddActivity extends AppCompatActivity {
 
         int hour = prefs.getInt("alarm_hour_" + eventId, 9);
         int minute = prefs.getInt("alarm_minute_" + eventId, 0);
+        selectedAlarmDaysBefore = prefs.getInt("alarm_days_before_" + eventId, 0);
 
         if (!selectedDateStr.isEmpty()) {
             Calendar calendar = Calendar.getInstance();
@@ -314,47 +315,17 @@ public class AddActivity extends AppCompatActivity {
                 sdf.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
                 calendar.setTime(sdf.parse(selectedDateStr));
             } catch (Exception e) {
+                e.printStackTrace();
                 calendar = Calendar.getInstance();
             }
-            calendar.add(Calendar.DATE, -selectedAlarmDaysBefore);
             calendar.set(Calendar.HOUR_OF_DAY, hour);
             calendar.set(Calendar.MINUTE, minute);
             calendar.set(Calendar.SECOND, 0);
+            calendar.set(Calendar.MILLISECOND, 0);
 
-            AlarmScheduler.scheduleAlarm(this, calendar, title);
+            calendar.add(Calendar.DAY_OF_MONTH, -selectedAlarmDaysBefore);
+
+            AlarmScheduler.schedulePushAlarm(this, calendar,   " 일정이 있어요.");
         }
     }
-
-    private void cancelScheduledAlarm() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        String title = editTextEventTitle.getText().toString();
-        String date = tvSelectedDate.getText().toString();
-        String eventId = title + "_" + date;
-
-        int alarmHour = prefs.getInt("alarm_hour_" + eventId, -1);
-        int alarmMinute = prefs.getInt("alarm_minute_" + eventId, -1);
-
-        if (alarmHour != -1 && alarmMinute != -1) {
-            Calendar calendar = Calendar.getInstance();
-            calendar.set(Calendar.HOUR_OF_DAY, alarmHour);
-            calendar.set(Calendar.MINUTE, alarmMinute);
-            calendar.set(Calendar.SECOND, 0);
-
-            AlarmScheduler.cancelAlarm(this);
-            prefs.edit().remove("alarm_hour").remove("alarm_minute").apply();
-
-            Toast.makeText(this, "알림이 취소되었습니다.", Toast.LENGTH_SHORT).show();
-        }
-    }
-        @Override
-        protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-            super.onActivityResult(requestCode, resultCode, data);
-
-            if (requestCode == 9999 && resultCode == RESULT_OK) {
-                // 권한 동의 후 다시 일정 저장
-                String title = editTextEventTitle.getText().toString();
-                saveEventToGoogleCalendar(title);  // 일정 저장 재시도
-            }
-        }
-
-    }
+}

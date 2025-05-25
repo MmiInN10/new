@@ -1,4 +1,5 @@
 package com.live2d.demo.full.calendar;
+
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -20,55 +21,66 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        String title = intent.getStringExtra("title");
-        if (title == null) title = "일정";
+        String action = intent.getAction();
 
-        // 앱 실행 인텐트 (MainActivity 실행)
-        Intent launchIntent = new Intent(context, MainActivity.class);
-        launchIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        if ("com.live2d.demo.PUSH_ALARM".equals(action)) {
+            // 푸시 알림용 처리
+            String title = intent.getStringExtra("title");
+            if (title == null) title = "일정";
 
-        PendingIntent pendingIntent = PendingIntent.getActivity(
-                context,
-                0,
-                launchIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
-        );
+            // 앱 실행 인텐트 (MainActivity 실행)
+            Intent launchIntent = new Intent(context, MainActivity.class);
+            launchIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
-        String channelId = "default_channel";
-
-        // Android O 이상 채널 생성
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(
-                    channelId,
-                    "Default Channel",
-                    NotificationManager.IMPORTANCE_DEFAULT
+            PendingIntent pendingIntent = PendingIntent.getActivity(
+                    context,
+                    0,
+                    launchIntent,
+                    PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
             );
-            channel.setDescription("일정 알림 채널");
 
-            NotificationManager manager = context.getSystemService(NotificationManager.class);
-            if (manager != null) {
-                manager.createNotificationChannel(channel);
+            String channelId = "default_channel";
+
+            // Android O 이상 채널 생성
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                NotificationChannel channel = new NotificationChannel(
+                        channelId,
+                        "Default Channel",
+                        NotificationManager.IMPORTANCE_DEFAULT
+                );
+                channel.setDescription("일정 알림 채널");
+
+                NotificationManager manager = context.getSystemService(NotificationManager.class);
+                if (manager != null) {
+                    manager.createNotificationChannel(channel);
+                }
             }
-        }
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId)
-                .setSmallIcon(R.drawable.ic_notification) // 적절한 아이콘 사용
-                .setContentTitle("⏰ 알림")
-                .setContentText(title + " 일정이 있어요.")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setAutoCancel(true)
-                .setContentIntent(pendingIntent);
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId)
+                    .setSmallIcon(R.drawable.ic_notification) // 적절한 아이콘 사용
+                    .setContentTitle("⏰ 알림")
+                    .setContentText(title)
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                    .setAutoCancel(true)
+                    .setContentIntent(pendingIntent);
 
-        // Android 13 이상은 POST_NOTIFICATIONS 권한 필요
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU ||
-                ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS)
-                        == PackageManager.PERMISSION_GRANTED) {
-            NotificationManagerCompat.from(context)
-                    .notify((int) System.currentTimeMillis(), builder.build());
+            // Android 13 이상은 POST_NOTIFICATIONS 권한 필요
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU ||
+                    ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS)
+                            == PackageManager.PERMISSION_GRANTED) {
+                NotificationManagerCompat.from(context)
+                        .notify((int) System.currentTimeMillis(), builder.build());
+            }
+
+        } else if ("com.live2d.demo.CHATBOT_ALARM".equals(action)) {
+            // 챗봇 알림용 처리: MainActivity 강제 이동 + 사용자명 전달
+            String userName = intent.getStringExtra("userName");
+            Intent forceIntent = new Intent(context, MainActivity.class);
+            forceIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            if (userName != null) {
+                forceIntent.putExtra("userName", userName);
+            }
+            context.startActivity(forceIntent);
         }
-        // 챗봇 알림 시 mainactivity 강제 이동
-        Intent forceIntent = new Intent(context, MainActivity.class);
-        forceIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        context.startActivity(forceIntent);
     }
 }
