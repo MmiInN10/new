@@ -11941,6 +11941,8 @@
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@android:color/white</item>
+    </style><style name="Theme_Demo_Splash" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/ic_app_logo</item>
     </style></file><file path="C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\main\res\values\themes.xml" qualifiers=""><style name="Theme.Demo" parent="Theme.AppCompat.Light.NoActionBar">
     
     <item name="colorPrimary">@color/purple_500</item>

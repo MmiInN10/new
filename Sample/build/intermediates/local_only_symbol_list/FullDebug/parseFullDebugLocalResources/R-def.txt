@@ -108,4 +108,5 @@ string project_id
 style AppTheme
 style BottomNavigationItemTextStyle
 style Theme.Demo
+style Theme_Demo_Splash
 style TimePickerDialogTheme

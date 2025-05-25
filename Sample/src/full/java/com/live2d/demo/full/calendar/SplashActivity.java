@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.live2d.demo.R;
 import com.live2d.demo.full.MainActivity;
@@ -14,18 +16,26 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // 스플래시 테마 적용
-        setTheme(R.style.Theme_Demo); // 테마명은 프로젝트에 맞게
+        setTheme(R.style.Theme_Demo_Splash); // 테마명은 프로젝트에 맞게
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash); // 스플래시 레이아웃
+        getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+                .edit()
+                .putBoolean("isFirstLaunch", true)
+                .apply();
+        boolean isFirstLaunch = isFirstLaunch();
+        Log.d("SplashActivity", "isFirstLaunch: " + isFirstLaunch);
 
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
                 if (isFirstLaunch()) {
                     // 최초 실행 시 이름 입력 화면으로 이동
+                    Log.d("SplashActivity", "이름 입력 액티비티로 이동");
                     startActivity(new Intent(SplashActivity.this, NameInputActivity.class));
                 } else {
                     // 이후 실행 시 메인 화면으로 이동
+                    Log.d("SplashActivity", "메인 액티비티로 이동");
                     startActivity(new Intent(SplashActivity.this, MainActivity.class));
                 }
                 finish(); // 스플래시 액티비티 종료

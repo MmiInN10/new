@@ -20,11 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-
-        <!-- MainActivity 설정 -->
         <activity
-            android:name=".full.MainActivity"
-            android:configChanges="orientation|screenSize"
+            android:name=".full.calendar.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -32,11 +29,23 @@
             </intent-filter>
         </activity>
 
+        <!-- MainActivity 설정 -->
+        <activity
+            android:name=".full.MainActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="true">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN"/>-->
+<!--                <category android:name="android.intent.category.LAUNCHER"/>-->
+<!--            </intent-filter>-->
+        </activity>
+
         <!-- 다른 액티비티들 -->
         <activity android:name=".full.calendar.CalendarActivity" />
         <activity android:name=".full.calendar.SettingActivity" />
         <activity android:name=".full.calendar.AddActivity" />
         <activity android:name=".full.calendar.EditActivity" />
+        <activity android:name=".full.calendar.NameInputActivity" />
 
     </application>
 </manifest>

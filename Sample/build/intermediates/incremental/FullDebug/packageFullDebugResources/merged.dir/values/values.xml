@@ -42,6 +42,9 @@
     <item name="android:statusBarColor" ns1:targetApi="l">?attr/colorPrimaryVariant</item>
     
   </style>
+    <style name="Theme_Demo_Splash" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/ic_app_logo</item>
+    </style>
     <style name="TimePickerDialogTheme" parent="Theme.AppCompat.Light.Dialog">
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
