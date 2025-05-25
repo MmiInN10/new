@@ -34,10 +34,10 @@
             android:name=".full.MainActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN"/>-->
-<!--                <category android:name="android.intent.category.LAUNCHER"/>-->
-<!--            </intent-filter>-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
 
         <!-- 다른 액티비티들 -->
@@ -46,6 +46,8 @@
         <activity android:name=".full.calendar.AddActivity" />
         <activity android:name=".full.calendar.EditActivity" />
         <activity android:name=".full.calendar.NameInputActivity" />
+        <receiver android:name=".full.calendar.AlarmReceiver" android:exported="true" />
 
     </application>
+
 </manifest>

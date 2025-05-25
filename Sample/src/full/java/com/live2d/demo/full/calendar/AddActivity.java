@@ -49,6 +49,7 @@ public class AddActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
+        getSupportActionBar().hide();
 
         tvSelectedDate = findViewById(R.id.tv_selected_date);
         editTextEventTitle = findViewById(R.id.editTextEventTitle);
@@ -117,6 +118,9 @@ public class AddActivity extends AppCompatActivity {
             tvAlarmTime.setText(String.format("%02d:%02d", hour, minute));
             prefs.edit().putInt("alarm_hour", hour).putInt("alarm_minute", minute).apply();
         }
+        ImageView ivCancel = findViewById(R.id.ivCancel);
+        ivCancel.setOnClickListener(v -> finish());
+
     }
 
     private void showDatePickerDialog() {
@@ -137,10 +141,6 @@ public class AddActivity extends AppCompatActivity {
         View bottomSheetView = getLayoutInflater().inflate(R.layout.bottomsheet_alarm_time_picker, null);
         TimePicker timePicker = bottomSheetView.findViewById(R.id.time_picker);
         Button btnConfirm = bottomSheetView.findViewById(R.id.btn_confirm_time);
-        NumberPicker numberPicker = bottomSheetView.findViewById(R.id.number_picker_days_before);
-        numberPicker.setMinValue(0);
-        numberPicker.setMaxValue(365);
-        numberPicker.setValue(selectedAlarmDaysBefore);
 
         BottomSheetDialog dialog = new BottomSheetDialog(this);
         dialog.setContentView(bottomSheetView);
@@ -149,11 +149,9 @@ public class AddActivity extends AppCompatActivity {
         btnConfirm.setOnClickListener(v -> {
             int hour = timePicker.getHour();
             int minute = timePicker.getMinute();
-            int daysBefore = numberPicker.getValue();
 
             selectedAlarmHour = hour;
             selectedAlarmMinute = minute;
-            selectedAlarmDaysBefore = daysBefore;
 
             tvAlarmTime.setText(String.format("%02d:%02d", hour, minute));
 
@@ -164,7 +162,6 @@ public class AddActivity extends AppCompatActivity {
             PreferenceManager.getDefaultSharedPreferences(this).edit()
                     .putInt("alarm_hour_" + eventId, hour)
                     .putInt("alarm_minute_" + eventId, minute)
-                    .putInt("alarm_days_before_" + eventId, daysBefore)
                     .apply();
 
             View customToastView = LayoutInflater.from(this).inflate(R.layout.custom_toast, null);

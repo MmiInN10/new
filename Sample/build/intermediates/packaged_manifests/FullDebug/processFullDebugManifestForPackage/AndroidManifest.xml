@@ -54,11 +54,11 @@
             android:name="com.live2d.demo.full.MainActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN"/> -->
-            <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
-            <!-- </intent-filter> -->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <!-- 다른 액티비티들 -->
@@ -67,6 +67,11 @@
         <activity android:name="com.live2d.demo.full.calendar.AddActivity" />
         <activity android:name="com.live2d.demo.full.calendar.EditActivity" />
         <activity android:name="com.live2d.demo.full.calendar.NameInputActivity" />
+
+        <receiver
+            android:name="com.live2d.demo.full.calendar.AlarmReceiver"
+            android:exported="true" />
+
         <activity
             android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
             android:excludeFromRecents="true"

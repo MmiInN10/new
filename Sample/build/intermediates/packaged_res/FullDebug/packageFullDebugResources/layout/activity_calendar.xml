@@ -26,7 +26,7 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="413dp"
-        android:layout_height="200dp"
+        android:layout_height="250dp"
         android:layout_marginTop="360dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,8 +53,7 @@
             android:layout_below="@id/tv_selected_date"
             android:layout_marginTop="10dp"
             android:contentDescription="일정 목록"
-            android:padding="16dp" /> <!-- 보조 기술을 위한 contentDescription 추가 -->
-
+            android:padding="16dp" />
         <!-- 저장된 일정이 없을 때 표시될 텍스트 -->
         <TextView
             android:id="@+id/tvEvents"

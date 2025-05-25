@@ -202,9 +202,6 @@ public class EditActivity extends AppCompatActivity {
         BottomSheetDialog dialog = new BottomSheetDialog(this);
         dialog.setContentView(bottomSheetView);
 
-        NumberPicker daysBeforePicker = bottomSheetView.findViewById(R.id.number_picker_days_before);
-        daysBeforePicker.setMinValue(0);
-        daysBeforePicker.setMaxValue(30);
 
         TimePicker timePicker = bottomSheetView.findViewById(R.id.time_picker);
         Button btnConfirm = bottomSheetView.findViewById(R.id.btn_confirm_time);
@@ -212,7 +209,6 @@ public class EditActivity extends AppCompatActivity {
         timePicker.setIs24HourView(true);
 
         btnConfirm.setOnClickListener(v -> {
-            selectedDaysBefore = daysBeforePicker.getValue();
             int hour;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 hour = timePicker.getHour();

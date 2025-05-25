@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import androidx.annotation.NonNull;
@@ -26,20 +25,16 @@ public final class BottomsheetAlarmTimePickerBinding implements ViewBinding {
   public final Button btnConfirmTime;
 
   @NonNull
-  public final NumberPicker numberPickerDaysBefore;
-
-  @NonNull
   public final TimePicker timePicker;
 
   @NonNull
   public final TextView tvAlarmTitle;
 
   private BottomsheetAlarmTimePickerBinding(@NonNull LinearLayout rootView,
-      @NonNull Button btnConfirmTime, @NonNull NumberPicker numberPickerDaysBefore,
-      @NonNull TimePicker timePicker, @NonNull TextView tvAlarmTitle) {
+      @NonNull Button btnConfirmTime, @NonNull TimePicker timePicker,
+      @NonNull TextView tvAlarmTitle) {
     this.rootView = rootView;
     this.btnConfirmTime = btnConfirmTime;
-    this.numberPickerDaysBefore = numberPickerDaysBefore;
     this.timePicker = timePicker;
     this.tvAlarmTitle = tvAlarmTitle;
   }
@@ -77,12 +72,6 @@ public final class BottomsheetAlarmTimePickerBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.number_picker_days_before;
-      NumberPicker numberPickerDaysBefore = ViewBindings.findChildViewById(rootView, id);
-      if (numberPickerDaysBefore == null) {
-        break missingId;
-      }
-
       id = R.id.time_picker;
       TimePicker timePicker = ViewBindings.findChildViewById(rootView, id);
       if (timePicker == null) {
@@ -96,7 +85,7 @@ public final class BottomsheetAlarmTimePickerBinding implements ViewBinding {
       }
 
       return new BottomsheetAlarmTimePickerBinding((LinearLayout) rootView, btnConfirmTime,
-          numberPickerDaysBefore, timePicker, tvAlarmTitle);
+          timePicker, tvAlarmTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

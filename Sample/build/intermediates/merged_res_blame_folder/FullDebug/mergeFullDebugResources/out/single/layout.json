@@ -20,6 +20,10 @@
         "source": "C:\\Users\\MIN\\.gradle\\daemon\\8.11.1\\com.live2d.demo.Sample-main-57:\\layout\\activity_setting.xml"
     },
     {
+        "merged": "com.live2d.demo.Sample-mergeFullDebugResources-52:/layout/activity_calendar.xml",
+        "source": "com.live2d.demo.Sample-main-57:/layout/activity_calendar.xml"
+    },
+    {
         "merged": "C:\\Users\\MIN\\.gradle\\daemon\\8.11.1\\com.live2d.demo.Sample-mergeFullDebugResources-52:\\layout\\activity_calendar.xml",
         "source": "C:\\Users\\MIN\\.gradle\\daemon\\8.11.1\\com.live2d.demo.Sample-main-57:\\layout\\activity_calendar.xml"
     },
@@ -38,9 +42,5 @@
     {
         "merged": "C:\\Users\\MIN\\.gradle\\daemon\\8.11.1\\com.live2d.demo.Sample-mergeFullDebugResources-52:\\layout\\item_event.xml",
         "source": "C:\\Users\\MIN\\.gradle\\daemon\\8.11.1\\com.live2d.demo.Sample-main-57:\\layout\\item_event.xml"
-    },
-    {
-        "merged": "com.live2d.demo.Sample-mergeFullDebugResources-52:/layout/activity_add.xml",
-        "source": "com.live2d.demo.Sample-main-57:/layout/activity_add.xml"
     }
 ]

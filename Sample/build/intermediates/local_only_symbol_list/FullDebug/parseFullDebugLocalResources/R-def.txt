@@ -64,7 +64,6 @@ id layout_push_alarm
 id linearLayout
 id linearLayout2
 id logoImage
-id number_picker_days_before
 id root_layout
 id switch_chatbot_alarm
 id switch_time
