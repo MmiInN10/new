@@ -66,5 +66,9 @@ public class AlarmReceiver extends BroadcastReceiver {
             NotificationManagerCompat.from(context)
                     .notify((int) System.currentTimeMillis(), builder.build());
         }
+        // 챗봇 알림 시 mainactivity 강제 이동
+        Intent forceIntent = new Intent(context, MainActivity.class);
+        forceIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        context.startActivity(forceIntent);
     }
 }

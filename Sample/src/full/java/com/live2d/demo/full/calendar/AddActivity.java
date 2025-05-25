@@ -14,6 +14,7 @@ import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecovera
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.live2d.demo.R;
+import com.live2d.demo.full.MainActivity;
 import com.live2d.demo.full.utils.GoogleCalendarHelper;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.timepicker.MaterialTimePicker;
@@ -35,12 +36,14 @@ public class AddActivity extends AppCompatActivity {
     private Switch switchTime;
     private LinearLayout timePickerLayout;
 
+    private Switch switchChatbotAlarm;
     private int selectedAlarmHour = 9;
     private int selectedAlarmMinute = 0;
     private int selectedAlarmDaysBefore = 0;
 
     private String selectedStartTime = "10:00";
     private String selectedEndTime = "11:00";
+
     private boolean isTimeSet = false;
 
     private GoogleCalendarHelper googleCalendarHelper;
@@ -59,6 +62,7 @@ public class AddActivity extends AppCompatActivity {
         tvStartTime = findViewById(R.id.tv_start_time);
         tvEndTime = findViewById(R.id.tv_end_time);
         tvAlarmTime = findViewById(R.id.tv_alarm_time);
+        switchChatbotAlarm = findViewById(R.id.switch_chatbot_alarm);
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -78,10 +82,19 @@ public class AddActivity extends AppCompatActivity {
 
         btnConfirm.setOnClickListener(v -> {
             String title = editTextEventTitle.getText().toString();
+            // 일정 제목이 비어있거나 날짜가 선택되지 않았으면 토스트 띄우고 return
+            if (title.isEmpty() || tvSelectedDate.getText().toString().isEmpty()) {
+                Toast.makeText(this, "일정 제목과 날짜를 입력하세요.", Toast.LENGTH_SHORT).show();
+                return;
+            }
             saveEventToGoogleCalendar(title);
 
-            if (!tvAlarmTime.getText().toString().isEmpty()) {
+            if (!tvAlarmTime.getText().toString().equals("시간 설정")) {
                 scheduleAlarm(title);
+            }
+            if (switchChatbotAlarm.isChecked()) {
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
             }
         });
 
