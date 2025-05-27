@@ -182,6 +182,29 @@ public class MainActivity extends Activity {
         removeAccessoryButton.setOnClickListener(v -> {
             accessoryView.setVisibility(View.INVISIBLE);
         });
+        // 4. 버튼 동작 설정
+        accessoryMenuButton.setOnClickListener(v -> {
+            String[] accessories = {"모자", "안경", "리본"};
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("악세서리 선택")
+                    .setItems(accessories, (dialog, which) -> {
+                        switch (which) {
+                            case 0: // 모자
+                                loadAccessoryFromAssets(accessoryView, "hat.png");
+                                accessoryView.setVisibility(View.VISIBLE);
+                                break;
+                            case 1: // 안경
+                                loadAccessoryFromAssets(accessoryView, "glasses.png");
+                                accessoryView.setVisibility(View.VISIBLE);
+                                break;
+                            case 2: // 리본
+                                loadAccessoryFromAssets(accessoryView, "ribbon.png");
+                                accessoryView.setVisibility(View.VISIBLE);
+                                break;
+                        }
+                    });
+            builder.show();
+        });
         // --- [1] accessoryView 초기화 ---
         accessoryView = new ImageView(this);
         accessoryView.setVisibility(View.INVISIBLE);

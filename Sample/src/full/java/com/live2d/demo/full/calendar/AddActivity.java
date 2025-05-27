@@ -64,6 +64,7 @@ public class AddActivity extends AppCompatActivity {
         switchChatbotAlarm = findViewById(R.id.switch_chatbot_alarm);
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        Switch switchChatbotAlarm = findViewById(R.id.switch_chatbot_alarm);
 
         ImageView ivDateForward = findViewById(R.id.ivDateForward);
         ImageView ivAlarmForward = findViewById(R.id.ivAlarmForward);
@@ -91,10 +92,10 @@ public class AddActivity extends AppCompatActivity {
             if (!tvAlarmTime.getText().toString().equals("시간 설정")) {
                 scheduleAlarm(title);
             }
-            if (switchChatbotAlarm.isChecked()) {
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
-            }
+//            if (switchChatbotAlarm.isChecked()) {
+//                Intent intent = new Intent(this, MainActivity.class);
+//                startActivity(intent);
+//            }
         });
 
         ivDateForward.setOnClickListener(v -> showDatePickerDialog());
@@ -213,6 +214,21 @@ public class AddActivity extends AppCompatActivity {
                 tvEndTime.setText("종료: " + formattedTime);
             }
         });
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean isOn = prefs.getBoolean("switchChatbotAlarm", false);
+        switchChatbotAlarm.setChecked(isOn);
+
+        switchChatbotAlarm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // SharedPreferences 저장
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(AddActivity.this);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putBoolean("switchChatbotAlarm", isChecked);
+                editor.apply();
+            }
+        });
+
     }
 
     private void saveEventToGoogleCalendar(String title) {

@@ -2,9 +2,9 @@
 manifest
 ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\main\AndroidManifest.xml:2:1-8:12
 MERGED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\main\AndroidManifest.xml:2:1-8:12
-INJECTED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:2:1-50:12
-INJECTED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:2:1-50:12
-INJECTED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:2:1-50:12
+INJECTED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:2:1-49:12
 MERGED from [Live2DCubismCore.aar] C:\Users\MIN\.gradle\caches\8.11.1\transforms\528809e8c17d42e14066f18469e300c2\transformed\jetified-Live2DCubismCore\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.databinding:databinding-adapters:8.9.0] C:\Users\MIN\.gradle\caches\8.11.1\transforms\724893131af3185944e720f1049edc64\transformed\databinding-adapters-8.9.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.databinding:databinding-runtime:8.9.0] C:\Users\MIN\.gradle\caches\8.11.1\transforms\1dca205a4990b82d3e5c80fabf1e9296\transformed\databinding-runtime-8.9.0\AndroidManifest.xml:2:1-7:12
@@ -165,8 +165,8 @@ ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManife
 	android:name
 		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:13:22-76
 application
-ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:15:5-48:19
-INJECTED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:15:5-48:19
+ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:15:5-47:19
+INJECTED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:15:5-47:19
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\MIN\.gradle\caches\8.11.1\transforms\03861d515695ac2ab8d4a13e4bda3ed1\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\MIN\.gradle\caches\8.11.1\transforms\03861d515695ac2ab8d4a13e4bda3ed1\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\MIN\.gradle\caches\8.11.1\transforms\2dc15b2b1eaa8e2d8de4dc89898ca6a4\transformed\constraintlayout-2.2.1\AndroidManifest.xml:7:5-20
@@ -291,10 +291,6 @@ ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManife
 		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:45:63-86
 	android:name
 		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:45:19-62
-receiver#com.live2d.demo.full.calendar.ChatbotAlarmReceiver
-ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:46:9-72
-	android:name
-		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:46:19-69
 uses-sdk
 INJECTED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml

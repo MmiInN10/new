@@ -43,7 +43,6 @@
         <activity android:name=".full.calendar.EditActivity" />
         <activity android:name=".full.calendar.NameInputActivity" />
         <receiver android:name=".full.calendar.AlarmReceiver" android:exported="true" />
-        <receiver android:name=".full.calendar.ChatbotAlarmReceiver" />
 
     </application>
 
