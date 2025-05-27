@@ -23,13 +23,14 @@ import com.google.api.services.calendar.CalendarScopes;
 import com.live2d.demo.R;
 import com.live2d.demo.full.MainActivity;
 import java.util.Collections;
-public class SettingActivity extends Activity {
+public class SettingActivity extends BaseActivity {
     private static final int REQUEST_ACCOUNT_PICKER = 1001;
     private GoogleAccountCredential mCredential;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
+        getSupportActionBar().hide();
 
         // 하단 버튼 설정
         ImageButton buttonMain = findViewById(R.id.button_main);
@@ -47,7 +48,6 @@ public class SettingActivity extends Activity {
         });
 
         buttonSetting.setOnClickListener(v -> {
-            // 현재 액티비티이므로 아무 동작 없음
         });
 
         // 사용자 이름 표시
@@ -105,16 +105,8 @@ public class SettingActivity extends Activity {
 
                 PreferenceManager.getDefaultSharedPreferences(this)
                         .edit().putString("accountName", accountName).apply();
+                showCustomToast("계정 연동 완료");
 
-                View toastView = LayoutInflater.from(this).inflate(R.layout.custom_toast, null);
-                TextView toastText = toastView.findViewById(R.id.toast_text);
-                toastText.setText("계정 연동 완료");
-
-                Toast toast = new Toast(this);
-                toast.setView(toastView);
-                toast.setGravity(Gravity.BOTTOM, 0, 200);
-                toast.setDuration(Toast.LENGTH_SHORT);
-                toast.show();
             }
         }
     }

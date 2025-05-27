@@ -30,7 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class EditActivity extends AppCompatActivity {
+public class EditActivity extends BaseActivity {
 
     private TextView tvSelectedDate, tvSelectedStartTime, tvSelectedEndTime, tvStartTime, tvEndTime, tvAlarmTime;
     private EditText etTitle;
@@ -128,7 +128,7 @@ public class EditActivity extends AppCompatActivity {
                         if (calendarEventId != null) {
                             GoogleCalendarHelper helper = new GoogleCalendarHelper(this);
                             helper.deleteEvent(calendarEventId);
-                            Toast.makeText(this, "일정이 삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                            showCustomToast("일정이 삭제되었습니다.");
                             finish();
                         }
                     })
@@ -187,7 +187,7 @@ public class EditActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            Toast.makeText(this, "일정이 수정되었습니다.", Toast.LENGTH_SHORT).show();
+            showCustomToast("일정이 수정되었습니다.");
             finish();
         }
 

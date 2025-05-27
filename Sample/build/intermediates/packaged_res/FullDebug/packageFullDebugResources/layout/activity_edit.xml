@@ -248,27 +248,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- 챗봇 알림 -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:paddingVertical="8dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="챗봇 알림"
-                android:textSize="16sp" />
-
-            <Switch
-                android:id="@+id/switch_chatbot_alarm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
         <!-- 푸시 알림 -->
         <LinearLayout
             android:id="@+id/layout_push_alarm"
@@ -284,7 +263,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="푸시 알림"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/tv_alarm_time"
@@ -299,6 +278,26 @@
                 android:focusable="true" />
         </LinearLayout>
 
+        <!-- 챗봇 알림 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingVertical="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="챗봇 알림"
+                android:textSize="18sp" />
+
+            <Switch
+                android:id="@+id/switch_chatbot_alarm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </LinearLayout>
 
     <FrameLayout

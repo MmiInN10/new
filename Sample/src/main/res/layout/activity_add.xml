@@ -234,7 +234,7 @@
             android:src="@drawable/baseline_arrow_forward_ios_24"
             android:contentDescription="알림 선택 아이콘" />
     </LinearLayout>
-    <!-- 알림 옵션 (푸시 알림, 챗봇 알림 순서 변경됨) -->
+    <!-- 알림 옵션 (푸시 알림, 챗봇 알림) -->
     <LinearLayout
         android:id="@+id/alarm_setting_layout"
         android:layout_width="match_parent"

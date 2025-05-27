@@ -17,13 +17,15 @@ import com.live2d.demo.R;
 import com.live2d.demo.full.MainActivity;
 
 public class AlarmReceiver extends BroadcastReceiver {
-
     @Override
     public void onReceive(Context context, Intent intent) {
         String title = intent.getStringExtra("title");
         if (title == null) title = "일정";
 
-        // 앱 실행 인텐트 (MainActivity 실행)
+        showNotification(context, title);  // 알림만 띄움!
+    }
+
+    private void showNotification(Context context, String title) {
         Intent launchIntent = new Intent(context, MainActivity.class);
         launchIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
@@ -36,7 +38,6 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         String channelId = "default_channel";
 
-        // Android O 이상 채널 생성
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(
                     channelId,
@@ -52,24 +53,22 @@ public class AlarmReceiver extends BroadcastReceiver {
         }
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId)
-                .setSmallIcon(R.drawable.ic_notification) // 적절한 아이콘 사용
+                .setSmallIcon(R.drawable.ic_notification)
                 .setContentTitle("⏰ 알림")
                 .setContentText(title + " 일정이 있어요.")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntent);
 
-        // Android 13 이상은 POST_NOTIFICATIONS 권한 필요
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU ||
                 ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS)
                         == PackageManager.PERMISSION_GRANTED) {
             NotificationManagerCompat.from(context)
                     .notify((int) System.currentTimeMillis(), builder.build());
         }
-        // 푸시 알림 시 mainactivity 강제 이동
 
-        Intent forceIntent = new Intent(context, MainActivity.class);
-        forceIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        context.startActivity(forceIntent);
+        Intent mainIntent = new Intent(context, MainActivity.class);
+        mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        context.startActivity(mainIntent);
     }
 }

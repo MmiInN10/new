@@ -28,7 +28,7 @@ import java.util.TimeZone;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class AddActivity extends AppCompatActivity {
+public class AddActivity extends BaseActivity {
     private TextView tvSelectedDate, tvStartTime, tvEndTime, tvAlarmTime;
     private EditText editTextEventTitle;
     private ImageView btnConfirm;
@@ -84,7 +84,7 @@ public class AddActivity extends AppCompatActivity {
             String title = editTextEventTitle.getText().toString();
             // 일정 제목이 비어있거나 날짜가 선택되지 않았으면 토스트 띄우고 return
             if (title.isEmpty() || tvSelectedDate.getText().toString().isEmpty()) {
-                Toast.makeText(this, "일정 제목과 날짜를 입력하세요.", Toast.LENGTH_SHORT).show();
+                showCustomToast("일정 제목과 날짜를 입력하세요.");
                 return;
             }
             saveEventToGoogleCalendar(title);
@@ -102,7 +102,16 @@ public class AddActivity extends AppCompatActivity {
 
         boolean isEditMode = getIntent().getBooleanExtra("isEditMode", false);
         if (!isEditMode) {
-            prefs.edit().remove("alarm_hour").remove("alarm_minute").apply();
+            String title = editTextEventTitle.getText().toString();
+            String date = tvSelectedDate.getText().toString();
+            String eventId = title + "_" + date;
+
+            // 개별 이벤트 알람 시간도 초기화
+            prefs.edit()
+                    .remove("alarm_hour_" + eventId)
+                    .remove("alarm_minute_" + eventId)
+                    .remove("alarm_days_before_" + eventId)
+                    .apply();
             tvAlarmTime.setText("시간 설정");
         }
 
@@ -133,6 +142,7 @@ public class AddActivity extends AppCompatActivity {
         }
         ImageView ivCancel = findViewById(R.id.ivCancel);
         ivCancel.setOnClickListener(v -> finish());
+        setupChatbotAlarmSwitch();
 
     }
 
@@ -228,13 +238,12 @@ public class AddActivity extends AppCompatActivity {
                 editor.apply();
             }
         });
-
     }
 
     private void saveEventToGoogleCalendar(String title) {
         String selectedDateStr = tvSelectedDate.getText().toString();
         if (selectedDateStr.isEmpty()) {
-            Toast.makeText(this, "날짜를 선택하세요.", Toast.LENGTH_SHORT).show();
+            showCustomToast("날짜를 선택하세요.");
             return;
         }
 
@@ -286,7 +295,7 @@ public class AddActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess() {
                                 runOnUiThread(() -> {
-                                    Toast.makeText(AddActivity.this, "일정이 저장되었습니다.", Toast.LENGTH_SHORT).show();
+                                    showCustomToast("일정이 저장되었습니다.");
                                     if (!"시간 설정".equals(tvAlarmTime.getText().toString())) {
                                         PreferenceManager.getDefaultSharedPreferences(AddActivity.this).edit()
                                                 .putInt("alarm_hour", selectedAlarmHour)
@@ -302,7 +311,7 @@ public class AddActivity extends AppCompatActivity {
                                     startActivityForResult(((UserRecoverableAuthIOException) e).getIntent(), 9999);
                                 } else {
                                     runOnUiThread(() ->
-                                            Toast.makeText(AddActivity.this, "일정 저장 실패: " + e.getMessage(), Toast.LENGTH_LONG).show()
+                                            showCustomToast("일정 저장 실패: " + e.getMessage())
                                     );
                                 }
                             }
@@ -359,7 +368,7 @@ public class AddActivity extends AppCompatActivity {
             AlarmScheduler.cancelAlarm(this);
             prefs.edit().remove("alarm_hour").remove("alarm_minute").apply();
 
-            Toast.makeText(this, "알림이 취소되었습니다.", Toast.LENGTH_SHORT).show();
+            showCustomToast("알림이 취소되었습니다.");
         }
     }
     @Override
@@ -372,5 +381,56 @@ public class AddActivity extends AppCompatActivity {
             saveEventToGoogleCalendar(title);  // 일정 저장 재시도
         }
     }
+    private void setupChatbotAlarmSwitch() {
+        switchChatbotAlarm.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(AddActivity.this);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("switchChatbotAlarm", isChecked);
+            editor.apply();
 
+            if (isChecked) {
+                showChatbotAlarmTimePicker();
+            }
+        });
+    }
+    private void showChatbotAlarmTimePicker() {
+        View bottomSheetView = getLayoutInflater().inflate(R.layout.bottomsheet_alarm_time_picker, null);
+        TimePicker timePicker = bottomSheetView.findViewById(R.id.time_picker);
+        Button btnConfirm = bottomSheetView.findViewById(R.id.btn_confirm_time);
+
+        BottomSheetDialog dialog = new BottomSheetDialog(this);
+        dialog.setContentView(bottomSheetView);
+        dialog.show();
+
+        btnConfirm.setOnClickListener(v -> {
+            int hour = timePicker.getHour();
+            int minute = timePicker.getMinute();
+
+            selectedAlarmHour = hour;
+            selectedAlarmMinute = minute;
+
+            tvAlarmTime.setText(String.format("%02d:%02d", hour, minute));
+
+            String title = editTextEventTitle.getText().toString();
+            String date = tvSelectedDate.getText().toString();
+            String eventId = title + "_" + date;
+
+            PreferenceManager.getDefaultSharedPreferences(this).edit()
+                    .putInt("alarm_hour_" + eventId, hour)
+                    .putInt("alarm_minute_" + eventId, minute)
+                    .apply();
+
+            View customToastView = LayoutInflater.from(this).inflate(R.layout.custom_toast, null);
+            TextView textView = customToastView.findViewById(R.id.toast_text);
+            textView.setText(String.format("챗봇 알림 시간 설정: %02d:%02d", hour, minute));
+
+            Toast toast = new Toast(this);
+            toast.setView(customToastView);
+            toast.setGravity(Gravity.BOTTOM, 0, 200);
+            toast.setDuration(Toast.LENGTH_SHORT);
+            toast.show();
+
+            dialog.dismiss();
+        });
+    }
 }

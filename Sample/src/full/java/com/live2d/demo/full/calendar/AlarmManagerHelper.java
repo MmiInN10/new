@@ -10,7 +10,7 @@ public class AlarmManagerHelper {
     // 알림 예약하는 정적 메서드
     public static void setAlarm(Context context, String title, long alarmTimeInMillis) {
         Intent intent = new Intent(context, AlarmReceiver.class);
-        intent.putExtra("title", title);  // 알림에 표시할 제목
+        intent.putExtra("title", title);
 
         // PendingIntent로 AlarmReceiver를 트리거
         PendingIntent pendingIntent = PendingIntent.getBroadcast(
@@ -29,7 +29,7 @@ public class AlarmManagerHelper {
                         alarmTimeInMillis,
                         pendingIntent
                 );
-                Log.d("AlarmManagerHelper", "알림 예약 성공! 예약 시간: " + alarmTimeInMillis);
+                Log.d("AlarmManagerHelper", "알림 예약 시간: " + alarmTimeInMillis);
             }
         } catch (Exception e) {
             Log.e("AlarmManagerHelper", "알림 예약 실패: " + e.getMessage());
