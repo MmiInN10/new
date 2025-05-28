@@ -376,6 +376,7 @@ public class MainActivity extends Activity {
                         new String[]{Manifest.permission.POST_NOTIFICATIONS}, 1001);
             }
         }
+        checkAndShowAlarmMessage(getIntent());
 
     }
     private void loadAccessoryFromAssets(ImageView view, String fileName) {
@@ -602,6 +603,26 @@ public class MainActivity extends Activity {
             textToSpeech.shutdown();
         }
         super.onDestroy();
+    }
+    // 알림 메시지 및 팝업
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+
+        checkAndShowAlarmMessage(intent);
+    }
+    private void checkAndShowAlarmMessage(Intent intent) {
+        if (intent != null) {
+            String alarmMessage = intent.getStringExtra("alarmMessage");
+            if (alarmMessage != null && !alarmMessage.isEmpty()) {
+                new AlertDialog.Builder(this)
+                        .setTitle("알림")
+                        .setMessage(alarmMessage)
+                        .setPositiveButton("확인", (dialog, which) -> dialog.dismiss())
+                        .setCancelable(false)
+                        .show();
+            }
+        }
     }
 }
 

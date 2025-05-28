@@ -5,9 +5,11 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.Manifest;
 import android.content.pm.PackageManager;
+import androidx.appcompat.app.AlertDialog;
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -21,8 +23,21 @@ public class AlarmReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         String title = intent.getStringExtra("title");
         if (title == null) title = "일정";
+        // 사용자 이름 가져오기
+        SharedPreferences prefs = context.getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
+        String userName = prefs.getString("userName", "사용자");
 
-        showNotification(context, title);  // 알림만 띄움!
+        // 사용자명/님, '일정명' 하실 시간이에요! 메시지
+        String message = userName + "님, '" + title + "' 하실 시간이에요!";
+
+        // 알림(Notification)을 띄움
+        showNotification(context, title);
+
+        // MainActivity로 이동 + 메시지 전달
+        Intent mainIntent = new Intent(context, MainActivity.class);
+        mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        mainIntent.putExtra("alarmMessage", message);
+        context.startActivity(mainIntent);
     }
 
     private void showNotification(Context context, String title) {
