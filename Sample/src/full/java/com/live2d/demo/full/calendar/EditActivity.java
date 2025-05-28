@@ -182,7 +182,8 @@ public class EditActivity extends BaseActivity {
                 alarmCalendar.set(Calendar.MINUTE, selectedAlarmMinute);
                 alarmCalendar.set(Calendar.SECOND, 0);
 
-                AlarmManagerHelper.setAlarm(this, inputTitle, alarmCalendar.getTimeInMillis());
+                int requestCode = 0; // 또는 알림마다 고유한 숫자를 지정
+                AlarmManagerHelper.setAlarm(this, requestCode, inputTitle, alarmCalendar.getTimeInMillis());
             } catch (ParseException e) {
                 e.printStackTrace();
             }

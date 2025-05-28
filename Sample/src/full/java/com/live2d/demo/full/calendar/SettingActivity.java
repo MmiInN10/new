@@ -2,7 +2,9 @@ package com.live2d.demo.full.calendar;
 
 import android.accounts.AccountManager;
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,6 +25,10 @@ import com.google.api.services.calendar.CalendarScopes;
 import com.live2d.demo.R;
 import com.live2d.demo.full.MainActivity;
 import java.util.Collections;
+import android.widget.Button;
+import com.live2d.demo.full.calendar.AlarmManagerHelper;
+
+
 public class SettingActivity extends BaseActivity {
     private static final int REQUEST_ACCOUNT_PICKER = 1001;
     private GoogleAccountCredential mCredential;
@@ -85,6 +91,22 @@ public class SettingActivity extends BaseActivity {
 
         SignInButton signInButton = findViewById(R.id.btnGoogleSignIn);
         signInButton.setOnClickListener(v -> signInWithGoogle());
+
+        Button buttonCancelNotifications = findViewById(R.id.button_cancel_notifications);
+        buttonCancelNotifications.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(SettingActivity.this)
+                        .setTitle("알람 해제")
+                        .setMessage("전체 알람을 해제하시겠습니까?")
+                        .setPositiveButton("예", (dialog, which) -> {
+                            AlarmManagerHelper.cancelAllAlarms(SettingActivity.this);
+                            showCustomToast("알림 해제 완료");
+                        })
+                        .setNegativeButton("아니요", null)
+                        .show();
+            }
+        });
     }
 
     private void signInWithGoogle() {
@@ -110,4 +132,5 @@ public class SettingActivity extends BaseActivity {
             }
         }
     }
+
 }

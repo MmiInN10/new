@@ -3387,6 +3387,7 @@ int id btn_confirm 0x7f080074
 int id btn_confirm_time 0x7f080075
 int id buttonPanel 0x7f080076
 int id button_calendar 0x7f080077
+int id button_cancel_notifications 0x7f08025b
 int id button_main 0x7f080078
 int id button_setting 0x7f080079
 int id cache_measures 0x7f08007a

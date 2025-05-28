@@ -40,6 +40,7 @@ id btn_add
 id btn_confirm
 id btn_confirm_time
 id button_calendar
+id button_cancel_notifications
 id button_main
 id button_setting
 id calendarView

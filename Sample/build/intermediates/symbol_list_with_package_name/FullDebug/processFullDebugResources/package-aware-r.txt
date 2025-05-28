@@ -3388,6 +3388,7 @@ id btn_confirm
 id btn_confirm_time
 id buttonPanel
 id button_calendar
+id button_cancel_notifications
 id button_main
 id button_setting
 id cache_measures

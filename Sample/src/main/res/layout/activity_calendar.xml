@@ -20,7 +20,8 @@
             android:layout_marginTop="20dp"
             android:padding="0dp"
             app:mcv_showOtherDates="all"
-            app:mcv_tileSize="40dp" />
+            app:mcv_tileSize="38dp" />
+
     </LinearLayout>
 
     <LinearLayout
