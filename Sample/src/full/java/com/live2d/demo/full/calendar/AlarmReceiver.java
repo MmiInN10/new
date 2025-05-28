@@ -17,28 +17,20 @@ import androidx.core.content.ContextCompat;
 
 import com.live2d.demo.R;
 import com.live2d.demo.full.MainActivity;
+import com.live2d.demo.full.calendar.VideoPlayerActivity;
 
 public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         String title = intent.getStringExtra("title");
         if (title == null) title = "일정";
-        // 사용자 이름 가져오기
-        SharedPreferences prefs = context.getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
-        String userName = prefs.getString("userName", "사용자");
 
-        // 사용자명/님, '일정명' 하실 시간이에요! 메시지
-        String message = userName + "님, '" + title + "' 하실 시간이에요!";
-
-        // 알림(Notification)을 띄움
-        showNotification(context, title);
-
-        // MainActivity로 이동 + 메시지 전달
-        Intent mainIntent = new Intent(context, MainActivity.class);
-        mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        mainIntent.putExtra("alarmMessage", message);
-        context.startActivity(mainIntent);
+        // showNotification은 그대로 두고, 영상 재생 Activity로 바로 이동
+        Intent videoIntent = new Intent(context, VideoPlayerActivity.class);
+        videoIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        context.startActivity(videoIntent);
     }
+
 
     private void showNotification(Context context, String title) {
         Intent launchIntent = new Intent(context, MainActivity.class);
@@ -81,9 +73,10 @@ public class AlarmReceiver extends BroadcastReceiver {
             NotificationManagerCompat.from(context)
                     .notify((int) System.currentTimeMillis(), builder.build());
         }
-
-        Intent mainIntent = new Intent(context, MainActivity.class);
-        mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        context.startActivity(mainIntent);
+    }
+    private void playVideo(Context context) {
+            Intent videoIntent = new Intent(context, VideoPlayerActivity.class);
+            videoIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            context.startActivity(videoIntent);
     }
 }

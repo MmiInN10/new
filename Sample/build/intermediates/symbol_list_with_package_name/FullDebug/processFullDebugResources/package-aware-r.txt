@@ -3851,6 +3851,7 @@ id up
 id useLogo
 id vertical
 id vertical_only
+id videoView
 id view_offset_helper
 id view_transition
 id view_tree_disjoint_parent
@@ -3996,6 +3997,7 @@ layout activity_main
 layout activity_name_input
 layout activity_setting
 layout activity_splash
+layout activity_video_player
 layout bottomsheet_alarm_time_picker
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
@@ -4111,6 +4113,7 @@ mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
 raw firebase_common_keep
+raw notification_video
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description

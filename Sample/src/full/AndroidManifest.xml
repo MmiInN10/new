@@ -44,7 +44,9 @@
         <activity android:name=".full.calendar.EditActivity" />
         <activity android:name=".full.calendar.NameInputActivity" />
         <receiver android:name=".full.calendar.AlarmReceiver" android:exported="true" />
-
+        <activity
+            android:name=".full.calendar.VideoPlayerActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

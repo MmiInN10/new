@@ -47,6 +47,7 @@ id calendarView
 id card_account_section
 id card_chatbot_settings
 id card_notification_settings
+id container
 id date_selection_layout
 id delete_container
 id editTextEventTitle
@@ -86,6 +87,7 @@ id tv_selected_date
 id tv_selected_end_time
 id tv_selected_start_time
 id tv_start_time
+id videoView
 layout activity_add
 layout activity_calendar
 layout activity_edit
@@ -93,11 +95,13 @@ layout activity_main
 layout activity_name_input
 layout activity_setting
 layout activity_splash
+layout activity_video_player
 layout bottomsheet_alarm_time_picker
 layout custom_toast
 layout item_event
 mipmap ic_launcher
 mipmap ic_launcher_round
+raw notification_video
 string app_name
 string gcm_defaultSenderId
 string google_api_key

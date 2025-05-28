@@ -3850,6 +3850,7 @@ int id up 0x7f080242
 int id useLogo 0x7f080243
 int id vertical 0x7f080244
 int id vertical_only 0x7f080245
+int id videoView 0x7f08025c
 int id view_offset_helper 0x7f080246
 int id view_transition 0x7f080247
 int id view_tree_disjoint_parent 0x7f080248
@@ -3995,6 +3996,7 @@ int layout activity_main 0x7f0b001f
 int layout activity_name_input 0x7f0b0020
 int layout activity_setting 0x7f0b0021
 int layout activity_splash 0x7f0b0022
+int layout activity_video_player 0x7f0b0092
 int layout bottomsheet_alarm_time_picker 0x7f0b0023
 int layout browser_actions_context_menu_page 0x7f0b0024
 int layout browser_actions_context_menu_row 0x7f0b0025
@@ -4110,6 +4112,7 @@ int mipmap ic_launcher 0x7f0d0000
 int mipmap ic_launcher_round 0x7f0d0001
 int plurals mtrl_badge_content_description 0x7f0e0000
 int raw firebase_common_keep 0x7f0f0000
+int raw notification_video 0x7f0f0001
 int string abc_action_bar_home_description 0x7f100000
 int string abc_action_bar_up_description 0x7f100001
 int string abc_action_menu_overflow_description 0x7f100002
