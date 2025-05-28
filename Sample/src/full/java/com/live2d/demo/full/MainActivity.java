@@ -65,7 +65,7 @@ public class MainActivity extends Activity {
     private TextToSpeech textToSpeech;
     private String audioFilePath;
     private final ExecutorService executorService = Executors.newSingleThreadExecutor();
-    private static final String OPENAI_API_KEY = "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";
+    private static final String OPENAI_API_KEY = "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";
     private static final String OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
 
     @Override
