@@ -3775,7 +3775,6 @@ id submit_area
 id sunday
 id supportScrollUp
 id switchWidget
-id switch_chatbot_alarm
 id switch_time
 id tabMode
 id tag_accessibility_actions

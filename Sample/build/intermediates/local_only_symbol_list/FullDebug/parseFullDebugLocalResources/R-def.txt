@@ -67,7 +67,6 @@ id linearLayout
 id linearLayout2
 id logoImage
 id root_layout
-id switch_chatbot_alarm
 id switch_time
 id textViewAccountLink
 id textViewChatbotSettings

@@ -35,7 +35,6 @@ public class AddActivity extends BaseActivity {
     private Switch switchTime;
     private LinearLayout timePickerLayout;
 
-    private Switch switchChatbotAlarm;
     private int selectedAlarmHour = 9;
     private int selectedAlarmMinute = 0;
     private int selectedAlarmDaysBefore = 0;
@@ -61,10 +60,8 @@ public class AddActivity extends BaseActivity {
         tvStartTime = findViewById(R.id.tv_start_time);
         tvEndTime = findViewById(R.id.tv_end_time);
         tvAlarmTime = findViewById(R.id.tv_alarm_time);
-        switchChatbotAlarm = findViewById(R.id.switch_chatbot_alarm);
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        Switch switchChatbotAlarm = findViewById(R.id.switch_chatbot_alarm);
 
         ImageView ivDateForward = findViewById(R.id.ivDateForward);
         ImageView ivAlarmForward = findViewById(R.id.ivAlarmForward);
@@ -142,7 +139,6 @@ public class AddActivity extends BaseActivity {
         }
         ImageView ivCancel = findViewById(R.id.ivCancel);
         ivCancel.setOnClickListener(v -> finish());
-        setupChatbotAlarmSwitch();
 
     }
 
@@ -222,20 +218,6 @@ public class AddActivity extends BaseActivity {
             } else {
                 selectedEndTime = formattedTime;
                 tvEndTime.setText("종료: " + formattedTime);
-            }
-        });
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean isOn = prefs.getBoolean("switchChatbotAlarm", false);
-        switchChatbotAlarm.setChecked(isOn);
-
-        switchChatbotAlarm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // SharedPreferences 저장
-                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(AddActivity.this);
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putBoolean("switchChatbotAlarm", isChecked);
-                editor.apply();
             }
         });
     }
@@ -319,7 +301,7 @@ public class AddActivity extends BaseActivity {
                 );
 
             } catch (Exception e) {
-                runOnUiThread(() -> Toast.makeText(AddActivity.this, "일정 저장 실패", Toast.LENGTH_SHORT).show());
+                runOnUiThread(() -> showCustomToast("일정 저장 실패"));
             }
         });
     }
@@ -380,57 +362,5 @@ public class AddActivity extends BaseActivity {
             String title = editTextEventTitle.getText().toString();
             saveEventToGoogleCalendar(title);  // 일정 저장 재시도
         }
-    }
-    private void setupChatbotAlarmSwitch() {
-        switchChatbotAlarm.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(AddActivity.this);
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putBoolean("switchChatbotAlarm", isChecked);
-            editor.apply();
-
-            if (isChecked) {
-                showChatbotAlarmTimePicker();
-            }
-        });
-    }
-    private void showChatbotAlarmTimePicker() {
-        View bottomSheetView = getLayoutInflater().inflate(R.layout.bottomsheet_alarm_time_picker, null);
-        TimePicker timePicker = bottomSheetView.findViewById(R.id.time_picker);
-        Button btnConfirm = bottomSheetView.findViewById(R.id.btn_confirm_time);
-
-        BottomSheetDialog dialog = new BottomSheetDialog(this);
-        dialog.setContentView(bottomSheetView);
-        dialog.show();
-
-        btnConfirm.setOnClickListener(v -> {
-            int hour = timePicker.getHour();
-            int minute = timePicker.getMinute();
-
-            selectedAlarmHour = hour;
-            selectedAlarmMinute = minute;
-
-            tvAlarmTime.setText(String.format("%02d:%02d", hour, minute));
-
-            String title = editTextEventTitle.getText().toString();
-            String date = tvSelectedDate.getText().toString();
-            String eventId = title + "_" + date;
-
-            PreferenceManager.getDefaultSharedPreferences(this).edit()
-                    .putInt("alarm_hour_" + eventId, hour)
-                    .putInt("alarm_minute_" + eventId, minute)
-                    .apply();
-
-            View customToastView = LayoutInflater.from(this).inflate(R.layout.custom_toast, null);
-            TextView textView = customToastView.findViewById(R.id.toast_text);
-            textView.setText(String.format("챗봇 알림 시간 설정: %02d:%02d", hour, minute));
-
-            Toast toast = new Toast(this);
-            toast.setView(customToastView);
-            toast.setGravity(Gravity.BOTTOM, 0, 200);
-            toast.setDuration(Toast.LENGTH_SHORT);
-            toast.show();
-
-            dialog.dismiss();
-        });
     }
 }

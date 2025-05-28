@@ -3774,7 +3774,6 @@ int id submit_area 0x7f0801f6
 int id sunday 0x7f0801f7
 int id supportScrollUp 0x7f0801f8
 int id switchWidget 0x7f0801f9
-int id switch_chatbot_alarm 0x7f0801fa
 int id switch_time 0x7f0801fb
 int id tabMode 0x7f0801fc
 int id tag_accessibility_actions 0x7f0801fd

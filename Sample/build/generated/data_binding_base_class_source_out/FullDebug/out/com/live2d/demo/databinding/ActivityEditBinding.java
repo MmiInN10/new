@@ -61,9 +61,6 @@ public final class ActivityEditBinding implements ViewBinding {
   public final LinearLayout layoutPushAlarm;
 
   @NonNull
-  public final Switch switchChatbotAlarm;
-
-  @NonNull
   public final Switch switchTime;
 
   @NonNull
@@ -100,11 +97,11 @@ public final class ActivityEditBinding implements ViewBinding {
       @NonNull ImageView ivAlarmForward, @NonNull ImageView ivCancel,
       @NonNull ImageView ivDateForward, @NonNull ImageView ivDatePicker,
       @NonNull ImageView ivDelete, @NonNull LinearLayout layoutPushAlarm,
-      @NonNull Switch switchChatbotAlarm, @NonNull Switch switchTime,
-      @NonNull LinearLayout timePickerLayout, @NonNull LinearLayout timeSelectionLayout,
-      @NonNull LinearLayout topBar, @NonNull TextView tvAlarmTime, @NonNull TextView tvEndTime,
-      @NonNull TextView tvSelectedDate, @NonNull TextView tvSelectedEndTime,
-      @NonNull TextView tvSelectedStartTime, @NonNull TextView tvStartTime) {
+      @NonNull Switch switchTime, @NonNull LinearLayout timePickerLayout,
+      @NonNull LinearLayout timeSelectionLayout, @NonNull LinearLayout topBar,
+      @NonNull TextView tvAlarmTime, @NonNull TextView tvEndTime, @NonNull TextView tvSelectedDate,
+      @NonNull TextView tvSelectedEndTime, @NonNull TextView tvSelectedStartTime,
+      @NonNull TextView tvStartTime) {
     this.rootView = rootView;
     this.alarmSelectionLayout = alarmSelectionLayout;
     this.alarmSettingLayout = alarmSettingLayout;
@@ -118,7 +115,6 @@ public final class ActivityEditBinding implements ViewBinding {
     this.ivDatePicker = ivDatePicker;
     this.ivDelete = ivDelete;
     this.layoutPushAlarm = layoutPushAlarm;
-    this.switchChatbotAlarm = switchChatbotAlarm;
     this.switchTime = switchTime;
     this.timePickerLayout = timePickerLayout;
     this.timeSelectionLayout = timeSelectionLayout;
@@ -230,12 +226,6 @@ public final class ActivityEditBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.switch_chatbot_alarm;
-      Switch switchChatbotAlarm = ViewBindings.findChildViewById(rootView, id);
-      if (switchChatbotAlarm == null) {
-        break missingId;
-      }
-
       id = R.id.switch_time;
       Switch switchTime = ViewBindings.findChildViewById(rootView, id);
       if (switchTime == null) {
@@ -299,9 +289,8 @@ public final class ActivityEditBinding implements ViewBinding {
       return new ActivityEditBinding((ConstraintLayout) rootView, alarmSelectionLayout,
           alarmSettingLayout, btnConfirm, dateSelectionLayout, deleteContainer, editTextEventTitle,
           ivAlarmForward, ivCancel, ivDateForward, ivDatePicker, ivDelete, layoutPushAlarm,
-          switchChatbotAlarm, switchTime, timePickerLayout, timeSelectionLayout, topBar,
-          tvAlarmTime, tvEndTime, tvSelectedDate, tvSelectedEndTime, tvSelectedStartTime,
-          tvStartTime);
+          switchTime, timePickerLayout, timeSelectionLayout, topBar, tvAlarmTime, tvEndTime,
+          tvSelectedDate, tvSelectedEndTime, tvSelectedStartTime, tvStartTime);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

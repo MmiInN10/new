@@ -24,6 +24,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         String title = intent.getStringExtra("title");
         if (title == null) title = "일정";
+        showNotification(context, title);
 
         // showNotification은 그대로 두고, 영상 재생 Activity로 바로 이동
         Intent videoIntent = new Intent(context, VideoPlayerActivity.class);
