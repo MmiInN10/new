@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.live2d.demo.R;
 import com.live2d.demo.full.MainActivity;
 
-public class NameInputActivity extends AppCompatActivity {
+public class NameInputActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class NameInputActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             } else {
-                Toast.makeText(NameInputActivity.this, "이름을 입력하세요.", Toast.LENGTH_SHORT).show();
+                showCustomToast("이름을 입력하세요.");
             }
         });
     }
