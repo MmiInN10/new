@@ -107,6 +107,26 @@ public class SettingActivity extends BaseActivity {
                         .show();
             }
         });
+        buttonCancelNotifications.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(SettingActivity.this)
+                        .setTitle("알람 해제")
+                        .setMessage("전체 알람을 해제하시겠습니까?")
+                        .setPositiveButton("예", (dialog, which) -> {
+                            // 푸시 알림 전체 취소
+                            AlarmManagerHelper.cancelAllAlarms(SettingActivity.this);
+
+                            // 챗봇 알림도 함께 취소
+                            AlarmManagerHelper.ChatbotAlarmHelper.cancelChatbotAlarm(SettingActivity.this);
+
+                            showCustomToast("알림 해제 완료");
+                        })
+                        .setNegativeButton("아니요", null)
+                        .show();
+            }
+        });
+
     }
 
     private void signInWithGoogle() {
