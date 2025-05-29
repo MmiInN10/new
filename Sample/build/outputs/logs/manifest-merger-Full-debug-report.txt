@@ -164,6 +164,10 @@ uses-permission#android.permission.SCHEDULE_EXACT_ALARM
 ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:13:5-78
 	android:name
 		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:13:22-76
+uses-permission#android.permission.VIBRATE
+ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:14:5-66
+	android:name
+		ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:14:22-63
 application
 ADDED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:15:5-50:19
 INJECTED from C:\Users\MIN\CubismSdkForJava-5-r.3 (2)\Sample\src\Full\AndroidManifest.xml:15:5-50:19
